@@ -3,19 +3,26 @@
   "version": "1.0.0",
   "description": "App to optmise images",
   "main": "main.js",
+  "productName": "ImageShrink",
   "scripts": {
     "start": "electron .",
     "dev": "nodemon --exec electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"ImageShrink\"",    
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/Icon_256x256.png --prune=false --out=release-builds"
+
   },
   "author": "Filipe Abdo",
   "license": "MIT",
   "devDependencies": {
     "ejs": "^3.1.8",
     "electron": "^22.0.0",
+    "electron-packager": "^17.1.1",
     "express": "^4.18.2"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
