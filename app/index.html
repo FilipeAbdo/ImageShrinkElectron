@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ImageSrink</title>
+</head>
+<body>
+    <div class="container center-aling main-container">
+        <h3 class="my-title"><i class="fas fa-images"></i> ImageShrink</h3>
+        <p>Choose an image to resize</p>
+        <form id="image-form">
+            <div class="file-field input-field">
+                <div class="btn browse-btn">
+                    <span>Browse</span>
+                    <input type="file" id="img">
+                </div>
+
+                <div class="file-path-wrapper">
+                    <input type="text" class="file-path validate" placeholder="Upload file" id="fileName">
+                </div>
+
+                <p>
+                    <strong>Quality:</strong>
+                    <em>The lower the quality, the smaller the file size</em>
+                </p>
+                <p class="range-field">
+                    <input type="range" min="0" max="100" id="slider" value="25">
+                </p>
+            </div>
+            <div class="card resizeDiv">
+                <input type="submit" value="Resize" class="btn resize-btn" style="margin-bottom: 5px;">
+                <label class="openfolderCheckBox">
+                    <input type="checkbox" class="filled-in checkbox-black" id="openDestFolder" checked="checked">
+                    <span style="color: black;">Open Folder</span>
+                </label>
+            </div>
+        </form>
+
+        <div class="card output">
+            <div class="card card-title">
+                Output Path:
+            </div>
+            <div class="card-content path-content">
+                <span id="output-path"></span>
+            </div>
+        </div>
+    </div>
+    <script src="js/materialize.min.js"></script>
+    <script>
+        const path = require('path');
+        const os = require('os');
+        const { ipcRenderer } = require('electron');
+
+        const form = document.getElementById('image-form');
+        const slider = document.getElementById('slider');
+        const img = document.getElementById('img');
+
+        document.getElementById('output-path').innerText = path.join(os.homedir(), 'ImageShrink\\outputs')
+
+        //onSubmit
+
+        form.addEventListener('submit', (e) =>{
+            e.preventDefault();
+
+            const imgPath = img.files[0].path
+            const quality = slider.value
+            const openFolder = openDestFolder.checked
+
+            // console.log(openFolder)
+
+            ipcRenderer.send('image:minimize', {
+                imgPath,
+                quality, 
+                openFolder,
+            })
+        });
+
+        //on done
+        ipcRenderer.on('image:done', () =>{
+            M.toast({
+                html: 'Image "' + fileName.value + '" resized to ' + slider.value + '% quality',
+            })
+        })
+    </script>
+</body>
+</html>

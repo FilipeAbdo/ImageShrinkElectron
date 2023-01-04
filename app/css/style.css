@@ -1,0 +1,92 @@
+.container {
+	width: 400px;
+	margin-top: -10px;
+	padding: 0 20px;
+}
+
+.about {
+	width: 100%;
+	margin-top: -5px !important;
+}
+
+.btn {
+	width: 100%;
+}
+
+.output {
+	margin-top: 25px;
+}
+
+#output-path {
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+
+.path-content{
+	padding: 10px 0px 20px 0px !important;
+}
+
+.my-title{
+	display: flex;
+	justify-content: center;
+	font-weight: 750;
+}
+
+#img{
+	height: 100%;
+    width: 100%;
+}
+
+.resizeDiv{
+	border-top: solid; 
+	border-bottom: solid; 
+	border-left: dashed; 
+	border-right: dashed; 
+	border-width: 2px 0px 1px 0px;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+	border-color: black; 
+	padding: 5px 2px 5px 2px;
+	background-color: gainsboro;
+}
+
+.openfolderCheckBox{
+	display:  flex;
+	justify-content: flex-end;
+}
+
+.checkbox-black[type="checkbox"].filled-in:checked + span:after{
+	border: 2px solid black;
+	background-color: black;
+}
+
+.browse-btn{
+	background-color: steelblue;
+	height: 3rem;
+}
+
+.browse-btn:hover{
+	background-color: #94B8D6;
+	box-shadow: 5px 10px 10px 0 rgb(10 10 10 / 14%), 0 3px 1px -2px rgb(10 10 10 / 12%), 0 1px 5px 0 rgb(10 10 10 / 20%);
+}
+
+.resize-btn{
+	background-color: black;
+	height: 3rem;
+}
+
+.resize-btn:hover{
+	background-color: #454545;
+	box-shadow: 5px 10px 10px 0 rgb(10 10 10 / 14%), 0 3px 1px -2px rgb(10 10 10 / 12%), 0 1px 5px 0 rgb(10 10 10 / 20%);
+}
+
+.file-path-wrapper{
+	padding: 0px !important;
+	width: 100%;
+}
+
+.main-container{
+	margin-top: 5px !important;
+	padding: 20px 20px;
+    box-shadow: inset 0 0px 20px 5px rgb(0 0 0 / 30%), 0 0px 6px 7px rgb(0 0 0 / 10%), 0 0px 29px 23px rgb(0 0 0 / 21%);
+}
